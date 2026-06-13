@@ -756,3 +756,45 @@ footer .footer-main .footer-tag i:hover {
         background-color: #120800;
     }
 }
+
+/* ======================
+   Hero: desktop vs mobile
+====================== */
+
+/* Desktop shows CSS background, mobile div hidden */
+.desktop-hero {
+    display: flex;
+}
+
+.mobile-hero {
+    display: none;
+}
+
+/* Mobile shows real img, desktop div hidden */
+@media (max-width: 768px) {
+
+    .desktop-hero {
+        display: none;
+    }
+
+    .mobile-hero {
+        display: block;
+        position: relative;
+        width: 100%;
+        padding-top: 70px; /* offset for fixed navbar */
+    }
+
+    .mobile-hero img {
+        width: 100%;
+        height: auto;
+        display: block;
+    }
+
+    .mobile-hero .order-txt {
+        position: absolute;
+        bottom: 16px;
+        left: 50%;
+        transform: translateX(-50%);
+        white-space: nowrap;
+    }
+}

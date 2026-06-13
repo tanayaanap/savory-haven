@@ -39,7 +39,16 @@
         </nav>
 
         <div class="main">
-            <div class="main_img">
+            <!-- Desktop: CSS background -->
+            <div class="main_img desktop-hero">
+                <div class="order-txt">
+                    <a href="#ORDER">Order Now</a>
+                    <i class="fa-solid fa-angle-right"></i>
+                </div>
+            </div>
+            <!-- Mobile: real img tag so the full image is always visible -->
+            <div class="mobile-hero">
+                <img src="thali-2.jpg" alt="Savory Haven Food">
                 <div class="order-txt">
                     <a href="#ORDER">Order Now</a>
                     <i class="fa-solid fa-angle-right"></i>
@@ -58,8 +67,6 @@
                 <h1><span>About</span>Us</h1>
                 <h3>Why Choose Us?</h3>
                 <p>
-                    About Savory Haven
-
                     Savory Haven is a place where delicious food meets warm hospitality. We serve freshly prepared dishes crafted with quality ingredients and authentic flavors, creating memorable dining experiences for every guest. Whether you're here for a quick meal, a family gathering, or a special occasion, our passion for great food and excellent service ensures you'll always leave with a smile.
                 </p>
             </div>
@@ -462,7 +469,7 @@
             totalAmount += amount;
             document.getElementById("total-amount").textContent = "Rs " + totalAmount;
 
-            // Clear fields 
+            // Clear fields
             ["ids","food","price","quantity","amount"].forEach(id =>
                 document.getElementById(id).value = "");
         }
