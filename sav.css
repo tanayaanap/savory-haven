@@ -115,7 +115,9 @@ section#HOME {
     min-height: 100vh;
     background-image: url("thali-2.jpg");
     background-size: cover;
-    background-position: center;
+    background-position: center top;
+    background-attachment: scroll;
+    background-repeat: no-repeat;
     display: flex;
     align-items: flex-end;
     justify-content: center;
@@ -165,16 +167,13 @@ section#HOME {
     width: 420px;
     max-width: 100%;
     flex-shrink: 0;
-    min-width: 0;
 }
 
 .about .about-main .about-img img {
     width: 100%;
-    max-width: 100%;
     height: auto;
     border-radius: 8px;
     object-fit: cover;
-    display: block;
 }
 
 .about .about-main .about-txt {
@@ -444,7 +443,6 @@ section#HOME {
     height: auto;
     border-radius: 8px;
     object-fit: cover;
-    display: block;
 }
 
 .order .order-main form {
@@ -624,6 +622,15 @@ footer .footer-main .footer-tag i:hover {
 /* Tablet portrait (≤ 768px) */
 @media (max-width: 768px) {
 
+    /* Hero — use a fixed pixel height instead of 100vh which causes
+       mobile browsers to miscalculate with address bar shown/hidden */
+    .main_img {
+        min-height: 60vw;
+        max-height: 100svh;
+        background-position: center center;
+        background-size: cover;
+    }
+
     /* Nav: hide links, show hamburger */
     section nav ul {
         display: none;
@@ -664,13 +671,8 @@ footer .footer-main .footer-tag i:hover {
         gap: 30px;
     }
 
-    .about .about-main .about-img {
-        width: 100%;
-    }
-
     .about .about-main .about-img img {
         width: 100%;
-        max-width: 100%;
     }
 
     .about .about-ord {
@@ -695,13 +697,8 @@ footer .footer-main .footer-tag i:hover {
         flex-direction: column;
     }
 
-    .order .order-main .order-image {
-        width: 100%;
-    }
-
     .order .order-main .order-image img {
         width: 100%;
-        max-width: 100%;
     }
 
     .order .order-main form {
@@ -719,6 +716,11 @@ footer .footer-main .footer-tag i:hover {
 
     section nav {
         padding: 0 16px;
+    }
+
+    /* Hero: on very small phones show a comfortable viewport height */
+    .main_img {
+        min-height: 55vw;
     }
 
     /* Menu: keep 2 columns so users don't scroll endlessly */
