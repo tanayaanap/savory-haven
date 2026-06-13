@@ -661,8 +661,8 @@ footer .footer-main .footer-tag i:hover {
     }
 
     .about .about-main .about-img {
-        width: 60%;
-        max-width: 260px;
+        width: 75%;
+        max-width: 320px;
         margin: 0 auto;
     }
 
@@ -713,17 +713,31 @@ footer .footer-main .footer-tag i:hover {
         padding: 0 16px;
     }
 
-    /* Menu: 1 column */
+    /* Menu: 2 columns */
     .menu .menu-box {
-        grid-template-columns: 1fr;
+        grid-template-columns: repeat(2, 1fr);
+        gap: 12px;
     }
 
-    /* Gallery: 1 column */
+    .menu .menu-box .menu-card .menu-image {
+        height: 140px;
+    }
+
+    .menu .menu-box .menu-card .menu-info h2 {
+        font-size: 0.92rem;
+    }
+
+    .menu .menu-box .menu-card .menu-info h3 {
+        font-size: 0.82rem;
+    }
+
+    /* Gallery: 2 columns */
     .gallery-image-box {
-        grid-template-columns: 1fr;
+        grid-template-columns: repeat(2, 1fr);
+        gap: 12px;
     }
 
-    /* Footer: 1 column */
+    /* Footer: 2 columns */
     footer .footer-main {
         grid-template-columns: 1fr 1fr;
     }
