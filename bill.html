@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Savory Haven — Bill</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"
+          integrity="sha512-DTOQO9RWCH3ppGqcWaEA1BIZOC6xxalwEsw9c2QQeAIftl+Vegovlnee1c9QX4TctnWMn13TZye+giMm8e2LwA=="
+          crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link rel="stylesheet" href="bill.css">
+</head>
+<body>
+
+    <h2>Your Orders</h2>
+
+    <div class="main-container">
+
+        <!-- Input Form -->
+        <div class="container">
+
+            <div class="part1">
+                <fieldset>
+                    <legend>Personal Info</legend>
+                    Full Name:
+                    <input type="text" id="name" placeholder="Enter your name">
+                    Email:
+                    <input type="email" id="email" placeholder="Enter your email">
+                </fieldset>
+            </div>
+
+            <div class="part2">
+                <fieldset>
+                    <legend>Order Details</legend>
+                    Food Item:
+                    <input type="text" id="food" placeholder="e.g. Paneer Tikka">
+                    Price (Rs):
+                    <input type="number" id="price" placeholder="e.g. 160">
+                    Quantity:
+                    <input type="number" id="quantity" placeholder="e.g. 2" oninput="calculate()">
+                </fieldset>
+            </div>
+
+        </div>
+
+        <!-- Add Button -->
+        <button type="button" class="btn btn-warning" onclick="addData()">
+            + Add Item
+        </button>
+
+        <!-- Bill Preview -->
+        <div class="container-2">
+            <fieldset>
+                <legend>Your Bill</legend>
+                <h3>Name: &nbsp;<span id="name2">—</span></h3>
+                <h3>Email: &nbsp;<span id="email2">—</span></h3>
+
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Food Item <span id="food2"></span></th>
+                            <th>Price <span id="price2"></span></th>
+                            <th>Quantity <span id="quantity2"></span></th>
+                            <th>Amount <span id="amount"></span></th>
+                        </tr>
+                    </thead>
+                    <tbody id="newtr"></tbody>
+                </table>
+            </fieldset>
+        </div>
+
+        <h2>Total Amount: &nbsp;<span id="amount2">Rs 0</span></h2>
+
+    </div>
+
+    <script>
+        var totalAmount = 0;
+
+        // Live update Name & Email display
+        document.getElementById("name").addEventListener("input", function () {
+            document.getElementById("name2").textContent = this.value || "—";
+        });
+
+        document.getElementById("email").addEventListener("input", function () {
+            document.getElementById("email2").textContent = this.value || "—";
+        });
+
+        // Live preview in table header as user types
+        document.getElementById("food").addEventListener("input", function () {
+            document.getElementById("food2").textContent = this.value ? "— " + this.value : "";
+        });
+
+        document.getElementById("price").addEventListener("input", function () {
+            document.getElementById("price2").textContent = this.value ? "— Rs " + this.value : "";
+            calculate();
+        });
+
+        function calculate() {
+            var price    = parseFloat(document.getElementById("price").value) || 0;
+            var quantity = parseFloat(document.getElementById("quantity").value) || 0;
+            var amount   = price * quantity;
+            document.getElementById("quantity2").textContent = quantity ? "— " + quantity : "";
+            document.getElementById("amount").textContent    = amount ? "— Rs " + amount : "";
+        }
+
+        function addData() {
+            var name     = document.getElementById("name").value.trim();
+            var food     = document.getElementById("food").value.trim();
+            var price    = parseFloat(document.getElementById("price").value) || 0;
+            var quantity = parseFloat(document.getElementById("quantity").value) || 0;
+
+            if (!food || !price || !quantity) {
+                alert("Please fill in Food Item, Price, and Quantity before adding.");
+                return;
+            }
+
+            var amount = price * quantity;
+            totalAmount += amount;
+
+            // Add row to bill table
+            var newRow = `
+                <tr>
+                    <td>${food}</td>
+                    <td>Rs ${price}</td>
+                    <td>${quantity}</td>
+                    <td>Rs ${amount}</td>
+                </tr>`;
+            document.getElementById("newtr").innerHTML += newRow;
+
+            // Update total
+            document.getElementById("amount2").textContent = "Rs " + totalAmount;
+
+            // Clear order fields (keep name & email)
+            document.getElementById("food").value     = "";
+            document.getElementById("price").value    = "";
+            document.getElementById("quantity").value = "";
+
+            // Clear live header previews
+            document.getElementById("food2").textContent     = "";
+            document.getElementById("price2").textContent    = "";
+            document.getElementById("quantity2").textContent = "";
+            document.getElementById("amount").textContent    = "";
+        }
+    </script>
+
+</body>
+</html>
