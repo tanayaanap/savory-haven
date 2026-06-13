@@ -107,7 +107,6 @@ section#HOME {
 
 .main {
     width: 100%;
-    min-height: 100vh;
 }
 
 .main_img {
@@ -115,7 +114,7 @@ section#HOME {
     min-height: 100vh;
     background-image: url("thali-2.jpg");
     background-size: cover;
-    background-position: center;
+    background-position: center top;
     display: flex;
     align-items: flex-end;
     justify-content: center;
@@ -165,16 +164,13 @@ section#HOME {
     width: 420px;
     max-width: 100%;
     flex-shrink: 0;
-    min-width: 0;
 }
 
 .about .about-main .about-img img {
     width: 100%;
-    max-width: 100%;
     height: auto;
     border-radius: 8px;
     object-fit: cover;
-    display: block;
 }
 
 .about .about-main .about-txt {
@@ -444,7 +440,6 @@ section#HOME {
     height: auto;
     border-radius: 8px;
     object-fit: cover;
-    display: block;
 }
 
 .order .order-main form {
@@ -664,13 +659,8 @@ footer .footer-main .footer-tag i:hover {
         gap: 30px;
     }
 
-    .about .about-main .about-img {
-        width: 100%;
-    }
-
     .about .about-main .about-img img {
         width: 100%;
-        max-width: 100%;
     }
 
     .about .about-ord {
@@ -695,13 +685,8 @@ footer .footer-main .footer-tag i:hover {
         flex-direction: column;
     }
 
-    .order .order-main .order-image {
-        width: 100%;
-    }
-
     .order .order-main .order-image img {
         width: 100%;
-        max-width: 100%;
     }
 
     .order .order-main form {
@@ -721,32 +706,17 @@ footer .footer-main .footer-tag i:hover {
         padding: 0 16px;
     }
 
-    /* Menu: keep 2 columns so users don't scroll endlessly */
+    /* Menu: 1 column */
     .menu .menu-box {
-        grid-template-columns: repeat(2, 1fr);
-        gap: 12px;
+        grid-template-columns: 1fr;
     }
 
-    /* Slightly shorter card images on small screens */
-    .menu .menu-box .menu-card .menu-image {
-        height: 140px;
-    }
-
-    .menu .menu-box .menu-card .menu-info h2 {
-        font-size: 0.92rem;
-    }
-
-    .menu .menu-box .menu-card .menu-info h3 {
-        font-size: 0.82rem;
-    }
-
-    /* Gallery: keep 2 columns */
+    /* Gallery: 1 column */
     .gallery-image-box {
-        grid-template-columns: repeat(2, 1fr);
-        gap: 12px;
+        grid-template-columns: 1fr;
     }
 
-    /* Footer: 2 columns */
+    /* Footer: 1 column */
     footer .footer-main {
         grid-template-columns: 1fr 1fr;
     }
@@ -759,4 +729,30 @@ footer .footer-main .footer-tag i:hover {
 /* Reduce motion */
 @media (prefers-reduced-motion: reduce) {
     * { transition: none !important; }
+}
+
+/* ======================
+   Hero image mobile fix
+====================== */
+
+/* Tablet & below: show full image using aspect ratio + contain */
+@media (max-width: 768px) {
+    .main_img {
+        min-height: 0;
+        aspect-ratio: 4/3;
+        background-size: contain;
+        background-position: center center;
+        background-color: #120800;
+        background-repeat: no-repeat;
+        padding-bottom: 20px;
+    }
+}
+
+/* Small phones: slightly taller ratio so image fills nicely */
+@media (max-width: 480px) {
+    .main_img {
+        aspect-ratio: 1/1;
+        background-size: contain;
+        background-color: #120800;
+    }
 }
